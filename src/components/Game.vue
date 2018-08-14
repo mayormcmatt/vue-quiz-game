@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<question :question='question'></question>
-		<answers :answers='activeQuestion'></answers>
+		<answers :answers='activeQuestion' @nextQuestion='getQuestion($event)'></answers>
 	</div>
 </template>
 
@@ -26,9 +26,27 @@
 		},
 		methods: {
 			getQuestion(answer) {
-				this.activeQuestion = this.questions.shift()
-				this.question = this.activeQuestion.question
-				console.log(this.question)
+				console.log('firing')
+				if (answer) {
+					this.result.correct++
+					console.log(this.result.correct)
+				} else if (answer === false) {
+					this.result.incorrect++
+				} else if (answer === null) {
+					console.log("Response null")
+				}
+
+				if (this.questions[0]) {
+					this.gameActive = true
+					this.activeQuestion = this.questions.shift()
+					this.question = this.activeQuestion.question
+					console.log(this.question)
+				} else {
+					this.$store.commit('setResults', this.result)
+					// this.$router.push({
+					// 	name: 'results'
+					// })
+				}
 			}
 		},
 		created() {

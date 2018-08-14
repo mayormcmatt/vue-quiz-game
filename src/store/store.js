@@ -26,6 +26,10 @@ export const store = new Vuex.Store({
 				}
 				state.questions = questions;
 				// console.log(state.questions)
+			},
+			setResults(state, answers) {
+				state.results.correct_answers = answers.correct;
+				state.results.incorrect_answers = answers.incorrect;
 			}
 		},
 		actions: {

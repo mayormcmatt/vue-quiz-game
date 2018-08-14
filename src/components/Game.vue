@@ -29,7 +29,6 @@
 				console.log('firing')
 				if (answer) {
 					this.result.correct++
-					console.log(this.result.correct)
 				} else if (answer === false) {
 					this.result.incorrect++
 				} else if (answer === null) {
@@ -43,14 +42,13 @@
 					console.log(this.question)
 				} else {
 					this.$store.commit('setResults', this.result)
-					// this.$router.push({
-					// 	name: 'results'
-					// })
+					this.$router.push({
+						name: 'results'
+					})
 				}
 			}
 		},
 		created() {
-			// console.log(this.questions)
 			this.getQuestion();
 		}
 	};

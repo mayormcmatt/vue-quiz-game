@@ -6,8 +6,8 @@
 					{{ option }}
 				</button>
 			</div>
-			<button v-if="!gameActive" @click="nextQuestion()">Next</button>
 		</div>
+		<button class="next-button" v-if="!gameActive" @click="nextQuestion()">Next</button>
 	</div>
 </template>
 
@@ -54,7 +54,44 @@
 	}
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+	.answer-options-container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
+
+	.answer-option {
+		width: 40%;
+		margin-bottom: 25px;
+		button {
+			margin: 0 auto;
+			display: block;
+			width: 20rem;
+			height: 6rem;
+			font-size: 1.5rem;
+			border-radius: 25px;
+			border: 2px solid #555;
+			opacity: 0.8;
+			transition: 0.2s;
+			&:hover {
+				background-color: #333;
+				color: white;
+				opacity: 1;
+				transition: 0.2s;
+			}
+		}
+	}
+
+	.next-button {
+		display: block;
+		margin: 0 auto;
+		width: 10rem;
+		height: 4rem;
+		border-radius: 10px;
+		font-size: 1.5rem;
+	}
+
 	.blueState {
 		background-color: deepskyblue;
 	}
